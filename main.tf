@@ -54,7 +54,7 @@ module "app-tier" {
   route_table_id          = "${aws_route_table.r.id}"
   cidr_block              = "10.22.1.0/24"
   user_data               = "${data.template_file.app_init.rendered}"
-  ami_id                  = "ami-24b0db5d"
+  ami_id                  = "ami-a03b7dd9"
   map_public_ip_on_launch = true
 
   ingress = [{
@@ -119,7 +119,7 @@ resource "aws_elb" "dragos_elb" {
 # Configure the Launch
 resource "aws_launch_configuration" "dragos_launch_config" {
   name_prefix      = "dragos-launch-config"
-  image_id         = "ami-24b0db5d"
+  image_id         = "ami-a03b7dd9"
   instance_type    = "t2.micro"
   user_data        = "${data.template_file.app_init.rendered}"
   security_groups  = ["${module.app-tier.sec_group}"]
